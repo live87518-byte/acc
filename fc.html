@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kho Tài Khoản Game</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#0f172a,#1e293b,#020617);
+    color:#fff;
+}
+
+header{
+    text-align:center;
+    padding:50px 20px;
+}
+
+header h1{
+    font-size:45px;
+    margin-bottom:10px;
+    text-shadow:0 0 20px #00e5ff;
+}
+
+header p{
+    color:#cbd5e1;
+    font-size:18px;
+}
+
+.packages{
+    width:90%;
+    max-width:1300px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:35px;
+    padding-bottom:60px;
+}
+
+.card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    backdrop-filter:blur(15px);
+    border-radius:25px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.4s;
+    box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+
+.card:hover{
+    transform:translateY(-15px);
+    box-shadow:0 25px 50px rgba(0,229,255,.25);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.info{
+    padding:25px;
+}
+
+.info h2{
+    margin-bottom:10px;
+    font-size:28px;
+}
+
+.info p{
+    color:#cbd5e1;
+    margin-bottom:20px;
+}
+
+.badge{
+    display:inline-block;
+    background:#00e5ff;
+    color:#000;
+    padding:8px 18px;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+.popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.8);
+    justify-content:center;
+    align-items:center;
+}
+
+.box{
+    width:400px;
+    background:#111827;
+    border-radius:25px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 0 40px rgba(0,229,255,.25);
+    animation:show .3s;
+}
+
+@keyframes show{
+    from{
+        transform:scale(.7);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.box h2{
+    margin-bottom:25px;
+}
+
+.box input{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#1e293b;
+    color:#fff;
+    font-size:16px;
+    outline:none;
+}
+
+.box button{
+    width:100%;
+    margin-top:20px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#00e5ff;
+    color:#000;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.box button:hover{
+    transform:scale(1.05);
+}
+
+.close{
+    margin-top:15px;
+    color:#94a3b8;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>🎮 KHO TÀI KHOẢN GAME VIP</h1>
+    <p>Chọn package và nhập mã Key để nhận tài khoản.</p>
+</header>
+
+<div class="packages">
+
+    <div class="card" onclick="openPopup('NHẬP KEY1 ĐỂ LẤY ACC👇')">
+        <img src="https://i.ibb.co/tPKc7xsn/1.png">
+        <div class="info">
+            <h2>🔥 ACC FC VIP1</h2>
+            <p>Tài khoản ngẫu nhiên - Trang phục và vật phẩm.</p>
+            <span class="badge">LẤY ACC</span>
+        </div>
+    </div>
+
+    <div class="card" onclick="openPopup('NHẬP KEY2 ĐỂ LẤY ACC👇')">
+        <img src="https://i.ibb.co/x81kfhkw/2.png">
+        <div class="info">
+            <h2>⚔️ ACC FC VIP2</h2>
+            <p>Tài khoản ngẫu nhiên - Nhiều tướng và trang phục.</p>
+            <span class="badge">LẤY ACC</span>
+        </div>
+    </div>
+    
+    <div class="card" onclick="openPopup('NHẬP KEY3 ĐỂ LẤY ACC👇')">
+        <img src="https://i.ibb.co/nsMxFt7x/3.png">
+        <div class="info">
+            <h2>⚔️ ACC FC VIP3</h2>
+            <p>Tài khoản ngẫu nhiên - Nhiều tướng và trang phục.</p>
+            <span class="badge">LẤY ACC</span>
+        </div>
+    </div>
+
+    <div class="card" onclick="openPopup('NHẬP KEY4 ĐỂ LẤY ACC👇')">
+        <img src="https://i.ibb.co/v4fZW1LT/4.png">
+        <div class="info">
+            <h2>🎯 ACC FC VIP4</h2>
+            <p>Tài khoản ngẫu nhiên - Nhiều skin hiếm.</p>
+            <span class="badge">LẤY ACC</span>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="popup" id="popup">
+    <div class="box">
+        Click vào đây để Lấy Key 👇
+		<a href="https://link4m.org/pTUeoW6o" target="_blank" style="text-decoration: none;">
+    <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer;">
+        Lấy Key1
+    </button>
+</a>
+<a href="https://link4m.org/8Zo3IWw" target="_blank" style="text-decoration: none;">
+    <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer;">
+        Lấy Key2
+    </button>
+</a>
+<a href="https://link4m.net/36ICc7k7" target="_blank" style="text-decoration: none;">
+    <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer;">
+       Lấy Key3
+    </button>
+</a>
+<a href="https://link4m.net/dgQ35Ska" target="_blank" style="text-decoration: none;">
+    <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer;">
+        Lấy Key4
+    </button>
+</a>
+        <h2 id="title">Nhập Mã Key</h2>
+
+        <input id="keyInput" type="text" placeholder="Nhập mã key của bạn">
+
+        <button onclick="checkKey()">Xác Nhận</button>
+
+        <div id="result" style="margin-top:20px;"></div>
+
+        <div class="close" onclick="closePopup()">Đóng</div>
+    </div>
+</div>
+
+</div>
+
+
+<script>
+let currentPackage = "";
+
+const data = {
+    "NHẬP KEY1 ĐỂ LẤY ACC👇": {
+        key: "123",
+        username: "anhkhac111",
+        password: "duytanhuynh11"
+    },
+    "NHẬP KEY2 ĐỂ LẤY ACC👇": {
+        key: "lzO8sfsR8tFFd5eF",
+        username: "hieu123fffff",
+        password: "nguyenhieu112"
+    },
+"NHẬP KEY3 ĐỂ LẤY ACC👇": {
+        key: "eCqgXEFtSbNAIl0l",
+        username: "tai03071992",
+        password: "huonganh1"
+    },
+    "NHẬP KEY4 ĐỂ LẤY ACC👇": {
+        key: "C7gHjslM4J2hGl97",
+        username: "monpk1",
+        password: "chua1506"
+    }
+};
+
+function openPopup(name){
+    currentPackage = name;
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("title").innerText = "🔑 " + name;
+    document.getElementById("keyInput").value = "";
+    document.getElementById("result").innerHTML = "";
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
+}
+
+function checkKey(){
+    const key = document.getElementById("keyInput").value.trim();
+
+    if(!data[currentPackage]){
+        return;
+    }
+
+    if(key === data[currentPackage].key){
+        document.getElementById("result").innerHTML =
+        `
+        <div style="background:#0f172a;padding:15px;border-radius:12px;">
+            <h3 style="color:#00ff99;">✅ Nhận tài khoản thành công</h3>
+            <p><b>Tài khoản:</b> ${data[currentPackage].username}</p>
+            <p><b>Mật khẩu:</b> ${data[currentPackage].password}</p>
+        </div>
+        `;
+    }else{
+        document.getElementById("result").innerHTML =
+        '<p style="color:#ff4d4d;">❌ Key không đúng!</p>';
+    }
+}
+</script>
+
+
+</body>
+</html>
