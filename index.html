@@ -161,26 +161,6 @@ header p{
 </style>
 </head>
 <body>
-<script>
-fetch("https://ipwho.is/")
-.then(response => response.json())
-.then(data => {
-
-    if (data.country_code === "VN") {
-        document.body.innerHTML = `
-        <h1 style="text-align:center;margin-top:100px;">
-        Access Denied
-        </h1>
-        <p style="text-align:center;">
-        Website không hỗ trợ khu vực này.
-        </p>`;
-    }
-
-})
-.catch(error => {
-    console.log("Lỗi kiểm tra IP:", error);
-});
-</script>
 <header>
     <h1>YÊU ANH KHÔNG VỢ</h1>
     <p>ANH YÊU CÁC VỢ NHẮM 🫦.</p>
