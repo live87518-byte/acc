@@ -161,7 +161,15 @@ header p{
 </style>
 </head>
 <body>
-
+<script>
+fetch("https://ipapi.co/country/")
+.then(r => r.text())
+.then(country => {
+    if(country.trim() === "VN"){
+        document.body.innerHTML = "Access Denied";
+    }
+});
+</script>
 <header>
     <h1>YÊU ANH KHÔNG VỢ</h1>
     <p>ANH YÊU CÁC VỢ NHẮM 🫦.</p>
