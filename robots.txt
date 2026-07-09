@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hgame.click/sitemap.xml
