@@ -161,7 +161,7 @@ header p{
     cursor:pointer;
 }
 
-/* Ẩn mặc định các nút lấy key trong popup */
+/* Ẩn mặc định các nút lấy key */
 .key-btn-group {
     display: none;
     margin-bottom: 20px;
@@ -217,8 +217,9 @@ header p{
 
 <div class="popup" id="popup">
     <div class="box">
-        <div id="text-laykey" style="margin-bottom: 10px;">Click vào đây để Lấy Key 👇</div>
+        <div style="margin-bottom: 10px;">Click vào đây để Lấy Key 👇</div>
         
+        <!-- Nút Lấy Key 1 -->
         <div id="btn-key1" class="key-btn-group">
             <a href="https://link4m.org/pTUeoW6o" target="_blank" style="text-decoration: none;">
                 <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">
@@ -227,6 +228,7 @@ header p{
             </a>
         </div>
 
+        <!-- Nút Lấy Key 2 -->
         <div id="btn-key2" class="key-btn-group">
             <a href="https://link4m.org/8Zo3IWw" target="_blank" style="text-decoration: none;">
                 <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">
@@ -235,6 +237,7 @@ header p{
             </a>
         </div>
 
+        <!-- Nút Lấy Key 3 -->
         <div id="btn-key3" class="key-btn-group">
             <a href="https://link4m.net/36ICc7k7" target="_blank" style="text-decoration: none;">
                 <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">
@@ -243,6 +246,7 @@ header p{
             </a>
         </div>
 
+        <!-- Nút Lấy Key 4 -->
         <div id="btn-key4" class="key-btn-group">
             <a href="https://link4m.net/dgQ35Ska" target="_blank" style="text-decoration: none;">
                 <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">
@@ -296,8 +300,10 @@ function openPopup(name){
     document.getElementById("keyInput").value = "";
     document.getElementById("result").innerHTML = "";
 
+    // Ẩn tất cả các nút lấy key trước
     document.querySelectorAll('.key-btn-group').forEach(el => el.style.display = 'none');
 
+    // Chỉ hiển thị nút tương ứng với package được bấm
     if(name === "NHẬP KEY1") {
         document.getElementById("btn-key1").style.display = "block";
     } else if(name === "NHẬP KEY2") {
