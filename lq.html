@@ -97,12 +97,14 @@ header p{
     background:rgba(0,0,0,.8);
     justify-content:center;
     align-items:center;
+    z-index:999;
     padding: 20px;
     overflow-y: auto;
 }
 
 .box{
     width:400px;
+    max-width:90%;
     background:#111827;
     border-radius:25px;
     padding:35px;
@@ -112,14 +114,8 @@ header p{
 }
 
 @keyframes show{
-    from{
-        transform:scale(.7);
-        opacity:0;
-    }
-    to{
-        transform:scale(1);
-        opacity:1;
-    }
+    from{ transform:scale(.7); opacity:0; }
+    to{ transform:scale(1); opacity:1; }
 }
 
 .box h2{
@@ -139,7 +135,7 @@ header p{
 
 .box button{
     width:100%;
-    margin-top:20px;
+    margin-top:15px;
     padding:15px;
     border:none;
     border-radius:12px;
@@ -155,16 +151,40 @@ header p{
     transform:scale(1.05);
 }
 
+.box button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+    transform:none;
+}
+
 .close{
     margin-top:15px;
     color:#94a3b8;
     cursor:pointer;
 }
 
-/* Ẩn mặc định các nút lấy key */
+.key-display{
+    background:#0f172a;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:5px;
+}
+
+.key-display b{
+    color:#00e5ff;
+    font-size:20px;
+    letter-spacing:2px;
+}
+
+#countdown{
+    color:#facc15;
+    font-weight:bold;
+}
+
+/* Ẩn mặc định các nhóm nút lấy key */
 .key-btn-group {
     display: none;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 </style>
 </head>
@@ -172,42 +192,42 @@ header p{
 
 <header>
     <h1>🎮 KHO TÀI KHOẢN GAME VIP</h1>
-    <p>Chọn package và nhập mã Key để nhận tài khoản.</p>
+    <p>Chọn gói để lấy key tự động - Key có hiệu lực 5 phút.</p>
 </header>
 
 <div class="packages">
 
-    <div class="card" onclick="openPopup('NHẬP KEY1')">
-        <img src="https://i.ibb.co/4ggvcrZc/IMG-4761.jpg">
+    <div class="card" onclick="openPopup('ACC LIÊN QUÂN VIP1')">
+        <img src="https://i.ibb.co/yFmLb583/unnamed.png">
         <div class="info">
-            <h2>🔥 ACC FF VIP1</h2>
+            <h2>🔥 ACC LIÊN QUÂN VIP1</h2>
             <p>Tài khoản ngẫu nhiên - Trang phục và vật phẩm.</p>
             <span class="badge">LẤY ACC</span>
         </div>
     </div>
 
-    <div class="card" onclick="openPopup('NHẬP KEY2')">
-        <img src="https://i.ibb.co/4nFhYSJV/IMG-4762.jpg">
+    <div class="card" onclick="openPopup('ACC LIÊN QUÂN VIP2')">
+        <img src="https://i.ibb.co/yFmLb583/unnamed.png">
         <div class="info">
-            <h2>⚔️ ACC FF VIP2</h2>
-            <p>Tài khoản ngẫu nhiên - Nhiều tướng và trang phục.</p>
-            <span class="badge">LẤY ACC</span>
-        </div>
-    </div>
-    
-    <div class="card" onclick="openPopup('NHẬP KEY3')">
-        <img src="https://i.ibb.co/pBGf1Y0J/IMG-4763.jpg">
-        <div class="info">
-            <h2>⚔️ ACC FF VIP3</h2>
+            <h2>⚔️ ACC LIÊN QUÂN VIP2</h2>
             <p>Tài khoản ngẫu nhiên - Nhiều tướng và trang phục.</p>
             <span class="badge">LẤY ACC</span>
         </div>
     </div>
 
-    <div class="card" onclick="openPopup('NHẬP KEY4')">
-        <img src="https://i.ibb.co/Z7mk4Ly/IMG-4765.jpg">
+    <div class="card" onclick="openPopup('ACC LIÊN QUÂN VIP3')">
+        <img src="https://i.ibb.co/yFmLb583/unnamed.png">
         <div class="info">
-            <h2>🎯 ACC FF VIP4</h2>
+            <h2>⚔️ ACC LIÊN QUÂN VIP3</h2>
+            <p>Tài khoản ngẫu nhiên - Nhiều tướng và trang phục.</p>
+            <span class="badge">LẤY ACC</span>
+        </div>
+    </div>
+
+    <div class="card" onclick="openPopup('ACC LIÊN QUÂN VIP4')">
+        <img src="https://i.ibb.co/yFmLb583/unnamed.png">
+        <div class="info">
+            <h2>🎯 ACC LIÊN QUÂN VIP4</h2>
             <p>Tài khoản ngẫu nhiên - Nhiều skin hiếm.</p>
             <span class="badge">LẤY ACC</span>
         </div>
@@ -217,12 +237,12 @@ header p{
 
 <div class="popup" id="popup">
     <div class="box">
-        <div style="margin-bottom: 10px;">Click vào đây để Lấy Key 👇</div>
-        
+        <div id="text-laykey" style="margin-bottom: 10px;">Click vào đây để Lấy Key 👇</div>
+
         <!-- Nút Lấy Key 1 -->
         <div id="btn-key1" class="key-btn-group">
             <a href="https://link4m.org/pTUeoW6o" target="_blank" style="text-decoration: none;">
-                <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">
+                <button style="background-color: #7c0276; color: white; width: 100%;">
                     Lấy Key 1
                 </button>
             </a>
@@ -231,7 +251,7 @@ header p{
         <!-- Nút Lấy Key 2 -->
         <div id="btn-key2" class="key-btn-group">
             <a href="https://link4m.org/8Zo3IWw" target="_blank" style="text-decoration: none;">
-                <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">
+                <button style="background-color: #7c0276; color: white; width: 100%;">
                     Lấy Key 2
                 </button>
             </a>
@@ -240,7 +260,7 @@ header p{
         <!-- Nút Lấy Key 3 -->
         <div id="btn-key3" class="key-btn-group">
             <a href="https://link4m.net/36ICc7k7" target="_blank" style="text-decoration: none;">
-                <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">
+                <button style="background-color: #7c0276; color: white; width: 100%;">
                     Lấy Key 3
                 </button>
             </a>
@@ -249,96 +269,137 @@ header p{
         <!-- Nút Lấy Key 4 -->
         <div id="btn-key4" class="key-btn-group">
             <a href="https://link4m.net/dgQ35Ska" target="_blank" style="text-decoration: none;">
-                <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">
+                <button style="background-color: #7c0276; color: white; width: 100%;">
                     Lấy Key 4
                 </button>
             </a>
         </div>
 
-        <h2 id="title">Nhập Mã Key</h2>
+        <h2 id="title">Đang lấy key...</h2>
 
-        <input id="keyInput" type="text" placeholder="Nhập mã key của bạn">
+        <div id="result"></div>
 
-        <button onclick="checkKey()">Xác Nhận</button>
-
-        <div id="result" style="margin-top:20px;"></div>
+        <input id="keyInput" type="text" placeholder="Nhập key hiển thị ở trên">
+        <button id="confirmBtn" onclick="checkKey()">Xác Nhận</button>
 
         <div class="close" onclick="closePopup()">Đóng</div>
     </div>
 </div>
 
 <script>
+const API_URL = "https://script.google.com/macros/s/DÁN_DEPLOYMENT_ID_VÀO_ĐÂY/exec";
+const GAME_NAME = "lq"; 
+
 let currentPackage = "";
+let expiresAt = 0;
+let timerInterval = null;
 
-const data = {
-    "NHẬP KEY1": {
-        key: "123",
-        username: "anhkhac111",
-        password: "duytanhuynh11"
-    },
-    "NHẬP KEY2": {
-        key: "lzO8sfsR8tFFd5eF",
-        username: "hieu123fffff",
-        password: "nguyenhieu112"
-    },
-    "NHẬP KEY3": {
-        key: "eCqgXEFtSbNAIl0l",
-        username: "tai03071992",
-        password: "huonganh1"
-    },
-    "NHẬP KEY4": {
-        key: "C7gHjslM4J2hGl97",
-        username: "monpk1",
-        password: "chua1506"
-    }
-};
-
-function openPopup(name){
-    currentPackage = name;
+async function openPopup(packageName){
+    currentPackage = packageName;
     document.getElementById("popup").style.display = "flex";
-    document.getElementById("title").innerText = "🔑 " + name;
+    document.getElementById("title").innerText = "🔑 " + packageName;
     document.getElementById("keyInput").value = "";
-    document.getElementById("result").innerHTML = "";
+    document.getElementById("confirmBtn").disabled = true;
+    document.getElementById("result").innerHTML = "<p>Đang tạo key, vui lòng đợi...</p>";
 
-    // Ẩn tất cả các nút lấy key trước
+    // Ẩn tất cả các nút lấy key trước khi hiển thị nút phù hợp
     document.querySelectorAll('.key-btn-group').forEach(el => el.style.display = 'none');
 
-    // Chỉ hiển thị nút tương ứng với package được bấm
-    if(name === "NHẬP KEY1") {
+    // Kiểm tra và hiển thị đúng nút lấy key dựa theo package
+    if(packageName.includes("VIP1")) {
         document.getElementById("btn-key1").style.display = "block";
-    } else if(name === "NHẬP KEY2") {
+    } else if(packageName.includes("VIP2")) {
         document.getElementById("btn-key2").style.display = "block";
-    } else if(name === "NHẬP KEY3") {
+    } else if(packageName.includes("VIP3")) {
         document.getElementById("btn-key3").style.display = "block";
-    } else if(name === "NHẬP KEY4") {
+    } else if(packageName.includes("VIP4")) {
         document.getElementById("btn-key4").style.display = "block";
+    }
+
+    try {
+        const res = await fetch(`${API_URL}?action=requestKey&game=${GAME_NAME}`);
+        const data = await res.json();
+
+        if(data.error){
+            document.getElementById("result").innerHTML = `<p style="color:#ff4d4d;">${data.error}</p>`;
+            return;
+        }
+
+        expiresAt = data.expiresAt;
+        document.getElementById("result").innerHTML = `
+            <div class="key-display">
+                <p>Key của bạn:</p>
+                <b>${data.key}</b>
+                <p style="margin-top:8px;">Hết hạn sau: <span id="countdown">5:00</span></p>
+            </div>
+        `;
+        document.getElementById("keyInput").value = data.key;
+        document.getElementById("confirmBtn").disabled = false;
+        startCountdown();
+    } catch(err){
+        document.getElementById("result").innerHTML =
+            '<p style="color:#ff4d4d;">Không kết nối được máy chủ. Vui lòng thử lại.</p>';
+    }
+}
+
+function startCountdown(){
+    clearInterval(timerInterval);
+    timerInterval = setInterval(()=>{
+        const remain = expiresAt - Date.now();
+        const el = document.getElementById("countdown");
+        if(remain <= 0){
+            clearInterval(timerInterval);
+            if(el) el.parentElement.parentElement.innerHTML =
+                '<p style="color:#ff4d4d;">⏱️ Key đã hết hạn. Vui lòng đóng và mở lại để lấy key mới.</p>';
+            document.getElementById("confirmBtn").disabled = true;
+            return;
+        }
+        const m = Math.floor(remain/60000);
+        const s = Math.floor((remain%60000)/1000);
+        if(el) el.innerText = `${m}:${s.toString().padStart(2,'0')}`;
+    }, 1000);
+}
+
+async function checkKey(){
+    const key = document.getElementById("keyInput").value.trim();
+    if(!key) return;
+
+    document.getElementById("confirmBtn").disabled = true;
+    document.getElementById("confirmBtn").innerText = "Đang kiểm tra...";
+
+    try {
+        const res = await fetch(`${API_URL}?action=claimAccount&key=${encodeURIComponent(key)}&game=${GAME_NAME}`);
+        const data = await res.json();
+
+        if(data.error){
+            document.getElementById("result").innerHTML += `<p style="color:#ff4d4d;margin-top:10px;">❌ ${data.error}</p>`;
+            document.getElementById("confirmBtn").disabled = false;
+            document.getElementById("confirmBtn").innerText = "Xác Nhận";
+            return;
+        }
+
+        clearInterval(timerInterval);
+        document.getElementById("result").innerHTML = `
+            <div style="background:#0f172a;padding:15px;border-radius:12px;">
+                <h3 style="color:#00ff99;">✅ Nhận tài khoản thành công</h3>
+                <p><b>Tài khoản:</b> ${data.username}</p>
+                <p><b>Mật khẩu:</b> ${data.password}</p>
+            </div>
+        `;
+        document.getElementById("keyInput").style.display = "none";
+        document.getElementById("confirmBtn").style.display = "none";
+    } catch(err){
+        document.getElementById("result").innerHTML += '<p style="color:#ff4d4d;">Không kết nối được máy chủ.</p>';
+        document.getElementById("confirmBtn").disabled = false;
+        document.getElementById("confirmBtn").innerText = "Xác Nhận";
     }
 }
 
 function closePopup(){
     document.getElementById("popup").style.display = "none";
-}
-
-function checkKey(){
-    const key = document.getElementById("keyInput").value.trim();
-
-    if(!data[currentPackage]){
-        return;
-    }
-
-    if(key === data[currentPackage].key){
-        document.getElementById("result").innerHTML =
-        `
-        <div style="background:#0f172a;padding:15px;border-radius:12px;">
-            <h3 style="color:#00ff99;">✅ Nhận tài khoản thành công</h3>
-            <p><b>Tài khoản:</b> ${data[currentPackage].username}</p>
-            <p><b>Mật khẩu:</b> ${data[currentPackage].password}</p>
-        </div>
-        `;
-    }else{
-        document.getElementById("result").innerHTML =
-        '<p style="color:#ff4d4d;">❌ Key không đúng!</p>';
-    }
+    clearInterval(timerInterval);
+    document.getElementById("keyInput").style.display = "block";
+    document.getElementById("confirmBtn").style.display = "block";
 }
 </script>
 
