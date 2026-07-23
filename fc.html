@@ -97,6 +97,8 @@ header p{
     background:rgba(0,0,0,.8);
     justify-content:center;
     align-items:center;
+    padding: 20px;
+    overflow-y: auto;
 }
 
 .box{
@@ -158,6 +160,12 @@ header p{
     color:#94a3b8;
     cursor:pointer;
 }
+
+/* Ẩn mặc định các nút lấy key trong popup */
+.key-btn-group {
+    display: none;
+    margin-bottom: 20px;
+}
 </style>
 </head>
 <body>
@@ -207,30 +215,42 @@ header p{
 
 </div>
 
-
 <div class="popup" id="popup">
     <div class="box">
-        Click vào đây để Lấy Key 👇
-		<a href="https://link4m.org/pTUeoW6o" target="_blank" style="text-decoration: none;">
-    <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer;">
-        Lấy Key1
-    </button>
-</a>
-<a href="https://link4m.org/8Zo3IWw" target="_blank" style="text-decoration: none;">
-    <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer;">
-        Lấy Key2
-    </button>
-</a>
-<a href="https://link4m.net/36ICc7k7" target="_blank" style="text-decoration: none;">
-    <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer;">
-       Lấy Key3
-    </button>
-</a>
-<a href="https://link4m.net/dgQ35Ska" target="_blank" style="text-decoration: none;">
-    <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer;">
-        Lấy Key4
-    </button>
-</a>
+        <div id="text-laykey" style="margin-bottom: 10px;">Click vào đây để Lấy Key 👇</div>
+        
+        <div id="btn-key1" class="key-btn-group">
+            <a href="https://link4m.org/pTUeoW6o" target="_blank" style="text-decoration: none;">
+                <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">
+                    Lấy Key 1
+                </button>
+            </a>
+        </div>
+
+        <div id="btn-key2" class="key-btn-group">
+            <a href="https://link4m.org/8Zo3IWw" target="_blank" style="text-decoration: none;">
+                <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">
+                    Lấy Key 2
+                </button>
+            </a>
+        </div>
+
+        <div id="btn-key3" class="key-btn-group">
+            <a href="https://link4m.net/36ICc7k7" target="_blank" style="text-decoration: none;">
+                <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">
+                    Lấy Key 3
+                </button>
+            </a>
+        </div>
+
+        <div id="btn-key4" class="key-btn-group">
+            <a href="https://link4m.net/dgQ35Ska" target="_blank" style="text-decoration: none;">
+                <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">
+                    Lấy Key 4
+                </button>
+            </a>
+        </div>
+
         <h2 id="title">Nhập Mã Key</h2>
 
         <input id="keyInput" type="text" placeholder="Nhập mã key của bạn">
@@ -242,9 +262,6 @@ header p{
         <div class="close" onclick="closePopup()">Đóng</div>
     </div>
 </div>
-
-</div>
-
 
 <script>
 let currentPackage = "";
@@ -260,7 +277,7 @@ const data = {
         username: "hieu123fffff",
         password: "nguyenhieu112"
     },
-"NHẬP KEY3 ĐỂ LẤY ACC👇": {
+    "NHẬP KEY3 ĐỂ LẤY ACC👇": {
         key: "eCqgXEFtSbNAIl0l",
         username: "tai03071992",
         password: "huonganh1"
@@ -278,6 +295,18 @@ function openPopup(name){
     document.getElementById("title").innerText = "🔑 " + name;
     document.getElementById("keyInput").value = "";
     document.getElementById("result").innerHTML = "";
+
+    document.querySelectorAll('.key-btn-group').forEach(el => el.style.display = 'none');
+
+    if(name.includes("KEY1")) {
+        document.getElementById("btn-key1").style.display = "block";
+    } else if(name.includes("KEY2")) {
+        document.getElementById("btn-key2").style.display = "block";
+    } else if(name.includes("KEY3")) {
+        document.getElementById("btn-key3").style.display = "block";
+    } else if(name.includes("KEY4")) {
+        document.getElementById("btn-key4").style.display = "block";
+    }
 }
 
 function closePopup(){
@@ -306,7 +335,6 @@ function checkKey(){
     }
 }
 </script>
-
 
 </body>
 </html>
