@@ -210,7 +210,14 @@ header p{
             <h2>🎯 ACC FF VIP4</h2>
             <p>Tài khoản ngẫu nhiên - Nhiều skin hiếm.</p>
             <span class="badge">LẤY ACC</span>
-        </div>
+       
+     <div class="card" onclick="openPopup('NHẬP KEY5')">
+        <img src="https://i.ibb.co/Z7mk4Ly/IMG-4765.jpg">
+        <div class="info">
+            <h2>🎯 ACC FF VIP5</h2>
+            <p>Tài khoản ngẫu nhiên - Nhiều skin hiếm.</p>
+            <span class="badge">LẤY ACC</span>
+         </div>
     </div>
 
 </div>
@@ -254,7 +261,14 @@ header p{
                 </button>
             </a>
         </div>
-
+<!-- Nút Lấy Key 5 -->
+        <div id="btn-key5" class="key-btn-group">
+            <a href="https://link4m.net/36ICc7k7" target="_blank" style="text-decoration: none;">
+                <button style="background-color: #7c0276; color: white; padding: 12px 24px; border: none; border-radius: 5px; cursor: pointer; width: 100%;">
+                    Lấy Key 5
+                </button>
+            </a>
+        </div>
         <h2 id="title">Nhập Mã Key</h2>
 
         <input id="keyInput" type="text" placeholder="Nhập mã key của bạn">
@@ -290,9 +304,13 @@ const data = {
         key: "C7gHjslM4J2hGl97",
         username: "monpk1",
         password: "chua1506"
+};
+    "NHẬP KEY5": {
+        key: "123",
+        username: "monpk1",
+        password: "chua1506"
     }
 };
-
 function openPopup(name){
     currentPackage = name;
     document.getElementById("popup").style.display = "flex";
@@ -312,6 +330,8 @@ function openPopup(name){
         document.getElementById("btn-key3").style.display = "block";
     } else if(name === "NHẬP KEY4") {
         document.getElementById("btn-key4").style.display = "block";
+    } else if(name === "NHẬP KEY5") {
+        document.getElementById("btn-key5").style.display = "block";
     }
 }
 
