@@ -35,7 +35,7 @@
             <div class="text-xs font-bold text-light">Nhạc nền</div>
             <div id="audioStatus" class="text-[10px] text-light/60">Bấm để phát</div>
         </div>
-        <!-- Thẻ Audio -->
+        <!-- Thẻ Audio (Sử dụng file MP3 trực tiếp chuẩn để tránh lỗi trình duyệt) -->
         <audio id="bgAudio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
     </div>
 
@@ -178,7 +178,7 @@
                     <p class="text-light/60 text-sm leading-relaxed">Mã hóa toàn bộ dữ liệu người dùng, đảm bảo sự an toàn tuyệt đối khi sử dụng.</p>
                 </div>
                 <!-- Feature 4 -->
-                <div class="bg-dark p-8 rounded-2xl border border-medium hover:border-primary/30 transition group">
+                <div class="bg-dark p-28 rounded-2xl border border-medium hover:border-primary/30 transition group">
                     <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 border border-primary/20 group-hover:scale-110 transition">
                         <i class="fas fa-bolt"></i>
                     </div>
@@ -205,19 +205,15 @@
         
         bgAudio.volume = 0.5; // Đặt mức âm lượng 50%
 
-        // Cố gắng phát ngay khi trang vừa tải
         window.addEventListener('DOMContentLoaded', () => {
             bgAudio.play().then(() => {
-                // Nếu trình duyệt cho phép phát luôn
                 audioIcon.className = 'fas fa-pause text-sm';
                 audioStatus.textContent = 'Đang phát...';
             }).catch(() => {
-                // Nếu bị trình duyệt chặn, tự động kích hoạt phát ngay khi người dùng có hành động chạm/click đầu tiên vào trang
                 const unlockAudio = () => {
                     bgAudio.play().then(() => {
                         audioIcon.className = 'fas fa-pause text-sm';
                         audioStatus.textContent = 'Đang phát...';
-                        // Gỡ bỏ các sự kiện sau khi đã phát thành công
                         window.removeEventListener('click', unlockAudio);
                         window.removeEventListener('touchstart', unlockAudio);
                         window.removeEventListener('scroll', unlockAudio);
@@ -230,7 +226,6 @@
             });
         });
 
-        // Hàm bật/tắt thủ công khi bấm vào nút
         function toggleBackgroundAudio() {
             if (bgAudio.paused) {
                 bgAudio.play();
