@@ -21,26 +21,13 @@
                 }
             }
         }
-    </script>
+
+    </style>
 </head>
 <body class="bg-dark text-light font-sans antialiased selection:bg-primary/30">
 
-    <!-- Thẻ Audio và Trình điều khiển (Góc dưới bên phải) -->
-    <div class="fixed bottom-6 right-6 z-50 flex items-center bg-medium/90 backdrop-blur-md border border-light/10 px-4 py-2.5 rounded-full shadow-2xl space-x-3">
-        <!-- Nút Bật/Tắt Audio -->
-        <button id="audioToggleBtn" onclick="toggleBackgroundAudio()" class="w-9 h-9 bg-primary hover:bg-primary/80 text-white rounded-full flex items-center justify-center transition shadow-md shadow-primary/30">
-            <i id="audioIcon" class="fas fa-play text-sm"></i>
-        </button>
-        <div class="text-left pr-2">
-            <div class="text-xs font-bold text-light">Nhạc nền</div>
-            <div id="audioStatus" class="text-[10px] text-light/60">Bấm để phát</div>
-        </div>
-        <!-- Thẻ Audio (Sử dụng file MP3 trực tiếp chuẩn để tránh lỗi trình duyệt) -->
-        <audio id="bgAudio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
-    </div>
-
     <!-- Header / Navbar -->
-    <header class="sticky top-0 z-40 bg-dark/90 backdrop-blur-sm border-b border-medium/50">
+    <header class="sticky top-0 z-50 bg-dark/90 backdrop-blur-sm border-b border-medium/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Logo & Brand -->
             <div class="flex items-center space-x-3">
@@ -88,7 +75,7 @@
                     </h1>
                     
                     <p class="text-lg text-light/70 mb-10 max-w-xl mx-auto md:mx-0 leading-relaxed">
-                        AimBot là giải pháp thông minh giúp bạn phân tích, tinh chỉnh thao tác và đạt hiệu suất tối đa trong mọi công việc. Giao diện mượt mà, công nghệ tiên tiến.
+                        AimBot là giải pháp tự động hóa thông minh giúp bạn phân tích, tinh chỉnh thao tác và đạt hiệu suất tối đa trong mọi công việc. Giao diện mượt mà, công nghệ tiên tiến.
                     </p>
                     
                     <!-- Download Buttons Area -->
@@ -149,7 +136,7 @@
     <!-- Features Section with Icons -->
     <section id="features" class="py-20 bg-medium/50 border-y border-medium">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-extrabold text-center tracking-tighter mb-5">Tính năng cốt lõi</h2>
+            <h2 class="text-4xl font-extrabold text-center tracking-tighter mb-5">Tính năng cốt lõi của AimBot</h2>
             <p class="text-light/60 text-center max-w-2xl mx-auto mb-16">Mọi thứ bạn cần để tối ưu hóa hiệu suất làm việc và giải trí một cách mượt mà nhất.</p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -158,8 +145,8 @@
                     <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 border border-primary/20 group-hover:scale-110 transition">
                         <i class="fas fa-crosshairs"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Tự động hóa thông minh</h3>
-                    <p class="text-light/60 text-sm leading-relaxed">Hệ thống AI hiện đại giúp khóa và phân tích mục tiêu với độ chính xác cao.</p>
+                    <h3 class="text-xl font-bold mb-3">Tự động nhắm mục tiêu</h3>
+                    <p class="text-light/60 text-sm leading-relaxed">Hệ thống AI thông minh giúp khóa và phân tích mục tiêu với độ chính xác cực cao.</p>
                 </div>
                 <!-- Feature 2 -->
                 <div class="bg-dark p-8 rounded-3xl border border-medium hover:border-primary/30 transition group">
@@ -167,7 +154,7 @@
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Phân tích hiệu suất</h3>
-                    <p class="text-light/60 text-sm leading-relaxed">Hiển thị biểu đồ thống kê thao tác chi tiết theo thời gian thực giúp cải thiện kỹ năng.</p>
+                    <p class="text-light/60 text-sm leading-relaxed">Hiển thị biểu đồ thống kê thao tác chi tiết theo thời gian thực giúp bạn cải thiện kỹ năng.</p>
                 </div>
                 <!-- Feature 3 -->
                 <div class="bg-dark p-8 rounded-3xl border border-medium hover:border-primary/30 transition group">
@@ -178,12 +165,12 @@
                     <p class="text-light/60 text-sm leading-relaxed">Mã hóa toàn bộ dữ liệu người dùng, đảm bảo sự an toàn tuyệt đối khi sử dụng.</p>
                 </div>
                 <!-- Feature 4 -->
-                <div class="bg-dark p-28 rounded-2xl border border-medium hover:border-primary/30 transition group">
+                <div class="bg-dark p-8 rounded-3xl border border-medium hover:border-primary/30 transition group">
                     <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 border border-primary/20 group-hover:scale-110 transition">
                         <i class="fas fa-bolt"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3">Tốc độ siêu nhanh</h3>
-                    <p class="text-light/60 text-sm leading-relaxed">Độ trễ cực thấp (low-latency), tương thích mượt mà trên mọi thiết bị.</p>
+                    <p class="text-light/60 text-sm leading-relaxed">Độ trễ cực thấp (low-latency), tương thích mượt mà trên cả thiết bị cấu hình thấp.</p>
                 </div>
             </div>
         </div>
@@ -192,51 +179,10 @@
     <!-- Footer -->
     <footer class="bg-dark py-10 border-t border-medium/50">
         <div class="max-w-7xl mx-auto px-4 text-center text-light/50 text-sm">
-            <p>&copy; 2026 Technologies. All rights reserved.</p>
+            <p>&copy; 2026 AimBot Technologies. All rights reserved.</p>
             <p class="mt-2 text-xs">Chính sách bảo mật | Điều khoản sử dụng</p>
         </div>
     </footer>
 
-    <!-- JavaScript xử lý Tự động phát khi vào web -->
-    <script>
-        const bgAudio = document.getElementById('bgAudio');
-        const audioIcon = document.getElementById('audioIcon');
-        const audioStatus = document.getElementById('audioStatus');
-        
-        bgAudio.volume = 0.5; // Đặt mức âm lượng 50%
-
-        window.addEventListener('DOMContentLoaded', () => {
-            bgAudio.play().then(() => {
-                audioIcon.className = 'fas fa-pause text-sm';
-                audioStatus.textContent = 'Đang phát...';
-            }).catch(() => {
-                const unlockAudio = () => {
-                    bgAudio.play().then(() => {
-                        audioIcon.className = 'fas fa-pause text-sm';
-                        audioStatus.textContent = 'Đang phát...';
-                        window.removeEventListener('click', unlockAudio);
-                        window.removeEventListener('touchstart', unlockAudio);
-                        window.removeEventListener('scroll', unlockAudio);
-                    }).catch(err => console.log("Không thể phát audio:", err));
-                };
-
-                window.addEventListener('click', unlockAudio);
-                window.addEventListener('touchstart', unlockAudio);
-                window.addEventListener('scroll', unlockAudio);
-            });
-        });
-
-        function toggleBackgroundAudio() {
-            if (bgAudio.paused) {
-                bgAudio.play();
-                audioIcon.className = 'fas fa-pause text-sm';
-                audioStatus.textContent = 'Đang phát...';
-            } else {
-                bgAudio.pause();
-                audioIcon.className = 'fas fa-play text-sm';
-                audioStatus.textContent = 'Đã tắt';
-            }
-        }
-    </script>
 </body>
 </html>
