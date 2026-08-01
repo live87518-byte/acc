@@ -1,233 +1,194 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/PNG" href="./favicon.PNG">
-<title>Kho Tài Khoản Game</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Segoe UI, sans-serif;
-}
-
-body{
-    min-height:100vh;
-    background:linear-gradient(135deg,#0f172a,#1e293b,#020617);
-    color:#fff;
-}
-
-header{
-    text-align:center;
-    padding:50px 20px;
-}
-
-header h1{
-    font-size:45px;
-    margin-bottom:10px;
-    text-shadow:0 0 20px #00e5ff;
-}
-
-header p{
-    color:#cbd5e1;
-    font-size:18px;
-}
-
-.packages{
-    width:90%;
-    max-width:1300px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:35px;
-    padding-bottom:60px;
-}
-
-.card{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.1);
-    backdrop-filter:blur(15px);
-    border-radius:25px;
-    overflow:hidden;
-    cursor:pointer;
-    transition:.4s;
-    box-shadow:0 20px 40px rgba(0,0,0,.4);
-}
-
-.card:hover{
-    transform:translateY(-15px);
-    box-shadow:0 25px 50px rgba(0,229,255,.25);
-}
-
-.card img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-}
-
-.info{
-    padding:25px;
-}
-
-.info h2{
-    margin-bottom:10px;
-    font-size:28px;
-}
-
-.info p{
-    color:#cbd5e1;
-    margin-bottom:20px;
-}
-
-.badge{
-    display:inline-block;
-    background:#00e5ff;
-    color:#000;
-    padding:8px 18px;
-    border-radius:30px;
-    font-weight:bold;
-}
-
-.popup{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.8);
-    justify-content:center;
-    align-items:center;
-    z-index:999;
-}
-
-.box{
-    width:400px;
-    max-width:90%;
-    background:#111827;
-    border-radius:25px;
-    padding:35px;
-    text-align:center;
-    box-shadow:0 0 40px rgba(0,229,255,.25);
-    animation:show .3s;
-}
-
-@keyframes show{
-    from{
-        transform:scale(.7);
-        opacity:0;
-    }
-    to{
-        transform:scale(1);
-        opacity:1;
-    }
-}
-
-.box h2{
-    margin-bottom:25px;
-}
-
-.box input{
-    width:100%;
-    padding:15px;
-    border:none;
-    border-radius:12px;
-    background:#1e293b;
-    color:#fff;
-    font-size:16px;
-    outline:none;
-}
-
-.box button{
-    width:100%;
-    margin-top:20px;
-    padding:15px;
-    border:none;
-    border-radius:12px;
-    background:#00e5ff;
-    color:#000;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.box button:hover{
-    transform:scale(1.05);
-}
-
-.close{
-    margin-top:15px;
-    color:#94a3b8;
-    cursor:pointer;
-}
-
-/* Thông báo */
-.announce-box{
-    text-align:left;
-}
-
-.announce-box h2{
-    text-align:center;
-    color:#00e5ff;
-}
-
-.announce-box p{
-    color:#cbd5e1;
-    line-height:1.6;
-    margin-bottom:12px;
-    font-size:15px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppFlow - Nâng Tầm Hiệu Suất | Tải App Ngay</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5', // Indigo
+                        dark: '#0F172A', // Slate 900
+                        medium: '#1E293B', // Slate 800
+                        light: '#F1F5F9', // Slate 100
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom gradients for background blobs */
+        .blob {
+            filter: blur(80px);
+            opacity: 0.2;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-dark text-light font-sans antialiased selection:bg-primary/30">
 
-<!-- Popup thông báo -->
-<div class="popup" id="announcePopup" style="display:flex;">
-    <div class="box announce-box">
-        <h2>📢 Thông Báo</h2>
-        <p>Chào mừng bạn đến với Kho Tài Khoản Game VIP!</p>
-        <p>Acc Là Hoàn Toàn Free Nên Mọi Người Hãy Vượt Link Để Ủng Hộ Tớ Nhé🥹🫦</p>
-        <button onclick="closeAnnounce()">Đã hiểu</button>
-    </div>
-</div>
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-dark/90 backdrop-blur-sm border-b border-medium/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo & Brand -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-primary rounded-2xl flex items-center justify-center shadow-lg shadow-primary/30 transform -rotate-6">
+                    <i class="fas fa-rocket text-white"></i>
+                </div>
+                <span class="text-2xl font-bold tracking-tighter">App<span class="text-primary">Flow</span></span>
+            </div>
 
-<header>
-    <h1>🎮 DEV NGUYEN</h1>
-    <p>Chọn game để xem tài khoản có sẵn.</p>
-</header>
-    <div class="packages">
-        <div class="card" onclick="window.location.href='fc.html'">
-    <img src="https://i.ibb.co/9mvbgZYg/f84c40056d7c472aa74619de83b3f1e21728460793.jpg">
-    <div class="info">
-        <h2>🔥 GAME FC MOBILE</h2>
-        <p>Tài khoản ngẫu nhiên - Trang phục và vật phẩm.</p>
-        <span class="badge">LẤY ACC</span>
-    </div>
-</div>
-   <div class="card" onclick="window.location.href='ff.html'">
-    <img src="https://i.ibb.co/mr3JqWmB/2game-logo-garena-free-fire-mobile.png" alt="Game FC Mobile">
-    <div class="info">
-        <h2>🔥 GAME FREE FIRE</h2>
-        <p>Tài khoản ngẫu nhiên - Trang phục và vật phẩm.</p>
-        <span class="badge">LẤY ACC</span>
-    </div>
-</div> 
-<div class="card" onclick="window.location.href='lq.html'">
-    <img src="https://i.ibb.co/yFmLb583/unnamed.png">
-    <div class="info">
-        <h2>🔥 GAME LIÊN QUÂN MOBILE</h2>
-        <p>Tài khoản ngẫu nhiên - Trang phục và vật phẩm.</p>
-        <span class="badge">LẤY ACC</span>
-    </div>
-</div>
-</div>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-light/80">
+                <a href="#features" class="hover:text-primary transition">Tính năng</a>
+                <a href="#how-it-works" class="hover:text-primary transition">Hướng dẫn</a>
+                <a href="#pricing" class="hover:text-primary transition">Bảng giá</a>
+            </nav>
 
-<script>
-function closeAnnounce(){
-    document.getElementById('announcePopup').style.display = 'none';
-}
-</script>
+            <!-- CTA Button -->
+            <a href="#download" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-full font-semibold text-sm transition shadow-md shadow-primary/20 flex items-center space-x-2">
+                <span>Tải App</span>
+                <i class="fas fa-arrow-down text-xs"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section with Visual Mockups -->
+    <section class="relative pt-20 pb-28 overflow-hidden">
+        <!-- Background decorative blobs -->
+        <div class="absolute top-20 -left-40 w-96 h-96 bg-primary rounded-full blob"></div>
+        <div class="absolute bottom-0 -right-40 w-96 h-96 bg-purple-600 rounded-full blob"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+                
+                <!-- Text Content -->
+                <div class="md:col-span-6 text-center md:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-medium text-primary px-4 py-1.5 rounded-full text-xs font-semibold mb-8 border border-medium shadow-inner">
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <span>Được bình chọn App tốt nhất năm 2025</span>
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tighter mb-6 leading-[1.1]">
+                        Quản lý<br>
+                        <span class="text-primary">Công việc</span> dễ dàng,<br>
+                        Hiệu quả tức thì.
+                    </h1>
+                    
+                    <p class="text-lg text-light/70 mb-10 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                        AppFlow là giải pháp tất cả trong một giúp bạn sắp xếp cuộc sống, tối ưu thời gian và đạt được mục tiêu nhanh hơn. Giao diện thân thiện, mạnh mẽ tính năng.
+                    </p>
+                    
+                    <!-- Download Buttons Area -->
+                    <div id="download" class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-5">
+                        <!-- Android -->
+                        <a href="#" class="group w-full sm:w-auto flex items-center justify-center space-x-3 bg-medium hover:bg-medium/70 border border-light/10 text-white px-8 py-4 rounded-2xl font-bold transition duration-300 hover:scale-105">
+                            <i class="fa-brands fa-google-play text-3xl text-green-400"></i>
+                            <div class="text-left">
+                                <div class="text-xs text-light/50 font-normal">Tải xuống cho</div>
+                                <div class="text-sm">Android (APK)</div>
+                            </div>
+                        </a>
+                        <!-- iOS -->
+                        <a href="#" class="group w-full sm:w-auto flex items-center justify-center space-x-3 bg-medium hover:bg-medium/70 border border-light/10 text-white px-8 py-4 rounded-2xl font-bold transition duration-300 hover:scale-105">
+                            <i class="fa-brands fa-apple text-3xl text-light/80 group-hover:text-white"></i>
+                            <div class="text-left">
+                                <div class="text-xs text-light/50 font-normal">Tải xuống trên</div>
+                                <div class="text-sm">App Store (iOS)</div>
+                            </div>
+                        </a>
+                    </div>
+                    <p class="text-center md:text-left text-xs text-light/40 mt-4 pl-2">Phiên bản v3.1.0 | Yêu cầu: iOS 13+ / Android 8.0+</p>
+                </div>
+
+                <!-- Visual Mockup Section -->
+                <div class="md:col-span-6 relative h-[550px] flex justify-center items-center">
+                    <!-- Center Mockup (Main Screen) -->
+                    <div class="absolute z-20 w-72 h-[500px] bg-dark rounded-[3rem] shadow-2xl shadow-black/50 border-8 border-black transform rotate-2 transition-transform hover:rotate-0 duration-300">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e97?q=80&w=400&auto=format&fit=crop" alt="App Screen 1" class="w-full h-full rounded-[2.5rem] object-cover">
+                        <!-- Notch -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-7 bg-black rounded-b-2xl"></div>
+                    </div>
+                    <!-- Left Mockup (Analytics) -->
+                    <div class="absolute z-10 -left-10 top-20 w-64 h-[450px] bg-dark rounded-[2.5rem] shadow-xl border-8 border-black opacity-60 transform -rotate-12">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=400&auto=format&fit=crop" alt="App Screen 2" class="w-full h-full rounded-3xl object-cover">
+                    </div>
+                    <!-- Right Mockup (Menu) -->
+                    <div class="absolute z-10 -right-10 top-10 w-60 h-[400px] bg-dark rounded-[2.5rem] shadow-xl border-8 border-black opacity-60 transform rotate-12">
+                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=400&auto=format&fit=crop" alt="App Screen 3" class="w-full h-full rounded-3xl object-cover">
+                    </div>
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute z-30 -bottom-5 -right-10 bg-medium p-4 rounded-2xl shadow-2xl border border-light/10 flex items-center space-x-3 transform rotate-6 animate-bounce">
+                        <div class="w-12 h-12 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center text-2xl">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold">Đánh giá 5 sao</div>
+                            <div class="text-xs text-light/60">Từ 10,000+ người dùng</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section with Icons -->
+    <section id="features" class="py-20 bg-medium/50 border-y border-medium">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-center tracking-tighter mb-5">Tính năng cốt lõi</h2>
+            <p class="text-light/60 text-center max-w-2xl mx-auto mb-16">Mọi thứ bạn cần để kiểm soát quy trình làm việc của mình một cách thông minh và nhanh chóng.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-dark p-8 rounded-3xl border border-medium hover:border-primary/30 transition group">
+                    <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 border border-primary/20 group-hover:scale-110 transition">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Quản lý tác vụ</h3>
+                    <p class="text-light/60 text-sm leading-relaxed">Tạo, phân loại và theo dõi tiến độ công việc dễ dàng với giao diện kéo thả trực quan.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-dark p-8 rounded-3xl border border-medium hover:border-primary/30 transition group">
+                    <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 border border-primary/20 group-hover:scale-110 transition">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Báo cáo thông minh</h3>
+                    <p class="text-light/60 text-sm leading-relaxed">Hiển thị biểu đồ trực quan về hiệu suất làm việc của bạn theo ngày, tuần và tháng.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-dark p-8 rounded-3xl border border-medium hover:border-primary/30 transition group">
+                    <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 border border-primary/20 group-hover:scale-110 transition">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Nhắc nhở thông minh</h3>
+                    <p class="text-light/60 text-sm leading-relaxed">Không bao giờ bỏ lỡ deadline với hệ thống thông báo tùy chỉnh linh hoạt.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="bg-dark p-8 rounded-3xl border border-medium hover:border-primary/30 transition group">
+                    <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-6 border border-primary/20 group-hover:scale-110 transition">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Làm việc nhóm</h3>
+                    <p class="text-light/60 text-sm leading-relaxed">Chia sẻ dự án, phân công nhiệm vụ và cộng tác mượt mà với các thành viên.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Simple Footer -->
+    <footer class="bg-dark py-10 border-t border-medium/50">
+        <div class="max-w-7xl mx-auto px-4 text-center text-light/50 text-sm">
+            <p>&copy; 2025 AppFlow Technologies. All rights reserved.</p>
+            <p class="mt-2 text-xs">Chính sách bảo mật | Điều khoản sử dụng</p>
+        </div>
+    </footer>
 
 </body>
 </html>
