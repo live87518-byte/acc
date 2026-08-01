@@ -25,18 +25,18 @@
 </head>
 <body class="bg-dark text-light font-sans antialiased selection:bg-primary/30">
 
-    <!-- Thẻ Audio ẩn và Trình điều khiển (Góc trên cùng bên phải) -->
+    <!-- Thẻ Audio và Trình điều khiển (Góc dưới bên phải) -->
     <div class="fixed bottom-6 right-6 z-50 flex items-center bg-medium/90 backdrop-blur-md border border-light/10 px-4 py-2.5 rounded-full shadow-2xl space-x-3">
         <!-- Nút Bật/Tắt Audio -->
         <button id="audioToggleBtn" onclick="toggleBackgroundAudio()" class="w-9 h-9 bg-primary hover:bg-primary/80 text-white rounded-full flex items-center justify-center transition shadow-md shadow-primary/30">
-            <i id="audioIcon" class="fas fa-pause text-sm"></i>
+            <i id="audioIcon" class="fas fa-play text-sm"></i>
         </button>
         <div class="text-left pr-2">
             <div class="text-xs font-bold text-light">Nhạc nền</div>
-            <div id="audioStatus" class="text-[10px] text-light/60">Đang phát...</div>
+            <div id="audioStatus" class="text-[10px] text-light/60">Bấm để phát</div>
         </div>
-        <!-- Thẻ Audio tự động phát (muted & autoplay để vượt qua chặn trình duyệt) -->
-        <audio id="bgAudio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop autoplay></audio>
+        <!-- Thẻ Audio -->
+        <audio id="bgAudio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop></audio>
     </div>
 
     <!-- Header / Navbar -->
@@ -197,22 +197,40 @@
         </div>
     </footer>
 
-    <!-- JavaScript xử lý Audio -->
+    <!-- JavaScript xử lý Tự động phát khi vào web -->
     <script>
         const bgAudio = document.getElementById('bgAudio');
         const audioIcon = document.getElementById('audioIcon');
         const audioStatus = document.getElementById('audioStatus');
+        
+        bgAudio.volume = 0.5; // Đặt mức âm lượng 50%
 
-        // Xử lý tự động phát (nhiều trình duyệt chặn autoplay có âm thanh nên cần xử lý tương tác đầu tiên nếu bị chặn)
+        // Cố gắng phát ngay khi trang vừa tải
         window.addEventListener('DOMContentLoaded', () => {
-            bgAudio.volume = 0.5; // Đặt âm lượng 50%
-            bgAudio.play().catch(() => {
-                // Nếu trình duyệt chặn, cập nhật lại giao diện trạng thái tạm dừng
-                audioIcon.className = 'fas fa-play text-sm';
-                audioStatus.textContent = 'Bấm để phát';
+            bgAudio.play().then(() => {
+                // Nếu trình duyệt cho phép phát luôn
+                audioIcon.className = 'fas fa-pause text-sm';
+                audioStatus.textContent = 'Đang phát...';
+            }).catch(() => {
+                // Nếu bị trình duyệt chặn, tự động kích hoạt phát ngay khi người dùng có hành động chạm/click đầu tiên vào trang
+                const unlockAudio = () => {
+                    bgAudio.play().then(() => {
+                        audioIcon.className = 'fas fa-pause text-sm';
+                        audioStatus.textContent = 'Đang phát...';
+                        // Gỡ bỏ các sự kiện sau khi đã phát thành công
+                        window.removeEventListener('click', unlockAudio);
+                        window.removeEventListener('touchstart', unlockAudio);
+                        window.removeEventListener('scroll', unlockAudio);
+                    }).catch(err => console.log("Không thể phát audio:", err));
+                };
+
+                window.addEventListener('click', unlockAudio);
+                window.addEventListener('touchstart', unlockAudio);
+                window.addEventListener('scroll', unlockAudio);
             });
         });
 
+        // Hàm bật/tắt thủ công khi bấm vào nút
         function toggleBackgroundAudio() {
             if (bgAudio.paused) {
                 bgAudio.play();
